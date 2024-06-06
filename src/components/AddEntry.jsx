@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 
-export default function AddEntry({clickSubmit, onChangeHandler, poem, formInput }){
+export default function AddEntry({clickSubmit, onChangeHandler, poem }){
     return(
         <div>
             <form className="form-elements" onSubmit={clickSubmit}>
@@ -9,7 +9,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem, formInput 
                     <input 
                     type="text" 
                     name="title"
-                    value={formInput.title}
+                    value={poem.title}
                     onChange={onChangeHandler}
                     placeholder='And Still I Rise'
                     required
@@ -21,7 +21,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem, formInput 
                         type="text" 
                         placeholder='Maya Angelou'
                         name="author"
-                        value={formInput.author}
+                        value={poem.author}
                         onChange={onChangeHandler}
                         required
                         />
@@ -39,7 +39,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem, formInput 
                     //     Still I'll rise."
                     rows={4}
                     cols={40}
-                    value={formInput.entry}
+                    value={poem.entry}
                     onChange={onChangeHandler}
                     />
                 </label>

@@ -2,7 +2,7 @@ import React from 'react'
 import AddEntry from '../components/AddEntry'
 import { collection, addDoc } from "firebase/firestore"; 
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 //firebase initialization
@@ -18,7 +18,7 @@ export default function Home(){
       };
       
       const app = initializeApp(firebaseConfig);
-    //   const analytics = getAnalytics(app);
+      const analytics = getAnalytics(app);
       const db = getFirestore(app);
 
     const [poem, setPoem] = React.useState({
@@ -30,20 +30,15 @@ export default function Home(){
         genre: ""
     })
 
-    // const [formInput, setFormInput] = React.useState({
-    //     title: "",
-    //     author: "",
-    //     entry: "",
-    //     genre: ""
-    // })
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`You've successfully saved your poem ${poem.title}`)
-        // setPoem(formInput)
-        addPoemToDB()
-        //clear form
-        e.target.reset() 
+        try {
+            await addPoemToDB(poem)
+            //clear the form
+            e.target.reset() 
+          } catch(e) {
+            console.log(e)
+          }
       } 
     
     async function addPoemToDB(poem) {
@@ -63,7 +58,6 @@ export default function Home(){
     }
   
     const onChangeHandler = (e) => {
-        // console.log('e.target', e.target)
         setPoem({
             ...poem,
             [e.target.name]: e.target.value 
