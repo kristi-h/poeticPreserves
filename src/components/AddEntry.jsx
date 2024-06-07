@@ -1,5 +1,6 @@
 import React from 'react'
 import '../App.css'
+import '../index.css'
 
 export default function AddEntry({clickSubmit, onChangeHandler, poem }){
     return(
@@ -9,6 +10,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                     <input 
                     type="text" 
                     name="title"
+                    className='input-box'
                     value={poem.title}
                     onChange={onChangeHandler}
                     placeholder='And Still I Rise'
@@ -21,6 +23,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                         type="text" 
                         placeholder='Maya Angelou'
                         name="author"
+                        className='input-box'
                         value={poem.author}
                         onChange={onChangeHandler}
                         required
@@ -31,12 +34,8 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 <label>Entry:
                     <textarea
                     name="entry"
+                    className='input-box'
                     minLength={10}
-                    // defaultValue=
-                    //     "Just like moons and like suns,
-                    //     With the certainty of tides,
-                    //     Just like hopes springing high,
-                    //     Still I'll rise."
                     rows={4}
                     cols={40}
                     value={poem.entry}
@@ -46,7 +45,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </pre>
                 <pre>
                 <label>Genre:
-                    <select name="genre" value={poem.genre} onChange={onChangeHandler} required>
+                    <select name="genre" className='input-box' value={poem.genre} onChange={onChangeHandler} required>
                         <option value="pastoral">Pastoral</option>
                         <option value="satirical">Satirical</option>
                         <option value="lyrical">Lyrical</option>
@@ -57,7 +56,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </pre>
                 <pre>
                 <label>Language:
-                    <select name="language" value={poem.language} onChange={onChangeHandler} required>
+                    <select name="language" className='input-box' value={poem.language} onChange={onChangeHandler} required>
                         <option value="english">English</option>
                         <option value="korean">Korean</option>
                         <option value="chinese">Chinese</option>
@@ -68,7 +67,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </pre>
                 <pre>
                 <label>Keywords:
-                    <select name="keyword" value={poem.keyword} onChange={onChangeHandler} required>
+                    <select name="keyword" className='input-box' value={poem.keyword} onChange={onChangeHandler} required>
                         <option value="nature">Nature</option>
                         <option value="uplifting">Uplifting</option>
                         <option value="empowering">Empowering</option>
@@ -79,7 +78,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </label>
                 </pre>
                 <pre>
-                <input type="submit" />
+                <input className={'input-button'} type="submit" />
                 </pre>
             </form>
         </div>
