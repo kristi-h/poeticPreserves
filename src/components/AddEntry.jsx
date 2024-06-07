@@ -46,7 +46,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </pre>
                 <pre>
                 <label>Genre:
-                    <select name="genre" required>
+                    <select name="genre" value={poem.genre} onChange={onChangeHandler} required>
                         <option value="pastoral">Pastoral</option>
                         <option value="satirical">Satirical</option>
                         <option value="lyrical">Lyrical</option>
@@ -57,7 +57,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </pre>
                 <pre>
                 <label>Language:
-                    <select name="language" required>
+                    <select name="language" value={poem.language} onChange={onChangeHandler} required>
                         <option value="english">English</option>
                         <option value="korean">Korean</option>
                         <option value="chinese">Chinese</option>
@@ -68,7 +68,7 @@ export default function AddEntry({clickSubmit, onChangeHandler, poem }){
                 </pre>
                 <pre>
                 <label>Keywords:
-                    <select name="keyword" required>
+                    <select name="keyword" value={poem.keyword} onChange={onChangeHandler} required>
                         <option value="nature">Nature</option>
                         <option value="uplifting">Uplifting</option>
                         <option value="empowering">Empowering</option>

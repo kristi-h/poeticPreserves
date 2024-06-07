@@ -49,6 +49,7 @@ export default function Home(){
               date_added: Date.now(),
               entry: poem.entry,
               genre: poem.genre,
+              keyword: poem.keyword
             });
             console.log("Document written with ID: ", docRef.id);
           } catch (error) {
