@@ -37,3 +37,16 @@ export function loginAccount(user) {
           })
     })
 }
+
+export async function addPoem(poem, user) {
+    try {
+        const docRef = await addDoc(collection(db, "poems"), {
+          ...poem,
+          date_added: Date.now(),
+          userId: user.uid
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (error) {
+        console.error(error.message);
+      }
+}
