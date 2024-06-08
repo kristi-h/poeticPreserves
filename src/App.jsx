@@ -1,7 +1,8 @@
 import React from 'react'
 import './App.css'
 import Home from './pages/Home'
-import Firebase from '../Firebase'
+// import Firebase from '../Firebase'
+import { createAccount, loginAccount, addPoem } from './lib/firebase'
 
 function App() {
   const [users, setUsers] = React.useState([])
