@@ -32,7 +32,7 @@ function App() {
      user={user}
      createAcct={createAccount}
      loginAcct={loginAccount}
-     savePoem={addPoemToDB}
+     savePoem={addPoem}
      />
     </>
   )
