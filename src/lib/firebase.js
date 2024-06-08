@@ -2,7 +2,11 @@ import {
     createUserWithEmailAndPassword,  
     signInWithEmailAndPassword 
 } from "firebase/auth"
-import { auth } from '../firebase.config'
+import {
+    addDoc,
+    collection
+} from 'firebase/firestore'
+import { auth, db } from '../firebase.config'
 
 export function createAccount(user) {
     const { email, password } = user
