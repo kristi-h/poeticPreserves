@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import Firebase from '../Firebase'
 
 function App() {
-  const [users, setUsers] = React.useState([])
+  
 
   const [user, setUser] = React.useState({
     id: 0,
@@ -22,6 +22,10 @@ function App() {
       entry: "",
       genre: "", 
       language: ""
+  })
+
+  const [allPoems, setAllPoems] = React.useState({
+
   })
 
   return (

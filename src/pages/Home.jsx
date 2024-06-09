@@ -1,6 +1,7 @@
 import React from 'react'
 import AddEntry from '../components/AddEntry'
 import Login from '../components/Login'
+import { NavBar } from '../components/NavBar'
 
 export default function Home({poem, user, createAcct, loginAcct, savePoem }){
 
@@ -36,6 +37,7 @@ export default function Home({poem, user, createAcct, loginAcct, savePoem }){
                 poem= {poem}
                 user= {user}
             />
+            <NavBar />
         </div>
         
     )

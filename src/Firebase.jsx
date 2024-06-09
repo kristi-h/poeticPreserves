@@ -3,7 +3,8 @@ import { initializeApp } from "firebase/app"
 import { 
         getAuth, 
         createUserWithEmailAndPassword,  
-        signInWithEmailAndPassword 
+        signInWithEmailAndPassword, 
+        signOut 
 } from "firebase/auth"
 // import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
@@ -75,6 +76,15 @@ export const Firebase = () = [
         .catch((error) => {
             console.error(error.message)
         })
+    }
+
+    function authSignOut() {
+        signOut(auth)
+            .then(() => {
+                signout()
+            }).catch((error) => {
+                console.error(error.message)
+            })
     }
 
     async function addPoemToDB(poem) {
