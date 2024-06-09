@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavBar } from './NavBar'
 
 const Login = ({user, createClicked, loginClicked}) => {
     const [emailInput, setEmailInput] = React.useState('')
@@ -17,6 +18,7 @@ const Login = ({user, createClicked, loginClicked}) => {
 
       //firebse method to login
       createClicked
+      //reset inputs
     }
     
     const onAcctLoginClick = () => {
@@ -33,43 +35,49 @@ const Login = ({user, createClicked, loginClicked}) => {
       } else {
         "Login credentials could not be found. Please try again or create a new account."
       }
+     //reset inputs
     }
-  
     
-
     return (
-      <div className={'outer-container'}>
-        <div className={'title-container'}>
-          <div>Login</div>
+      <>
+      <section id="signedout-view">
+          <div className={'outer-container'}>
+          <div className={'title-container'}>
+            <div>Login</div>
+          </div>
+          <br />
+          <div className={'input-container'}>
+            <input
+              value={emailInput}
+              placeholder="Email"
+              onChange={(e) => setEmailInput(e.target.value)}
+              className={'input-box'}
+            />
+            <label className="error-label">{emailInputError}</label>
+          </div>
+          <br />
+          <div className={'input-container'}>
+            <input
+              value={passwordInput}
+              placeholder="Password"
+              onChange={(e) => setPasswordInput(e.target.value)}
+              className={'input-box'}
+            />
+            <label className="error-label">{passwordInputError}</label>
+          </div>
+          <br />
+          <div className={'input-container'}>
+            <input className={'input-button'} type="button" onClick={onAcctLoginClick} id="login-btn" value={'Log in'} />
+          </div>
+          <div className={'input-container'}>
+            <input className={'input-button'} type="button" onClick={onAcctCreateClick} id="create-btn" value={'Create account'} />
+          </div>
         </div>
-        <br />
-        <div className={'input-container'}>
-          <input
-            value={emailInput}
-            placeholder="Email"
-            onChange={(e) => setEmailInput(e.target.value)}
-            className={'input-box'}
-          />
-          <label className="error-label">{emailInputError}</label>
-        </div>
-        <br />
-        <div className={'input-container'}>
-          <input
-            value={passwordInput}
-            placeholder="Password"
-            onChange={(e) => setPasswordInput(e.target.value)}
-            className={'input-box'}
-          />
-          <label className="error-label">{passwordInputError}</label>
-        </div>
-        <br />
-        <div className={'input-container'}>
-          <input className={'input-button'} type="button" onClick={onAcctLoginClick} id="login-btn" value={'Log in'} />
-        </div>
-        <div className={'input-container'}>
-          <input className={'input-button'} type="button" onClick={onAcctCreateClick} id="create-btn" value={'Create account'} />
-        </div>
-      </div>
+      </section>
+      <section id="signedin-view">
+        <h3>You can now add new entries to your account</h3>
+      </section>
+    </>
     )
   }
   

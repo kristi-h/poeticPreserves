@@ -26,6 +26,7 @@ export default function Home({poem, user, createAcct, loginAcct, savePoem }){
 
     return(
         <div>
+            <NavBar />
             <Login 
              user= {user}
              createClicked={createAcct}
@@ -37,7 +38,6 @@ export default function Home({poem, user, createAcct, loginAcct, savePoem }){
                 poem= {poem}
                 user= {user}
             />
-            <NavBar />
         </div>
         
     )

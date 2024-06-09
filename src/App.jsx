@@ -8,6 +8,7 @@ function App() {
 
   const [user, setUser] = React.useState({
     id: 0,
+    name: "",
     email: "",
     password: "",
     isLoggedIn: false,

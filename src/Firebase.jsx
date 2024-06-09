@@ -5,6 +5,9 @@ import {
         createUserWithEmailAndPassword,  
         signInWithEmailAndPassword, 
         signOut 
+        onAuthStateChanged,
+        GoogleAuthProvider,
+        signInWithPopup 
 } from "firebase/auth"
 // import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
@@ -21,6 +24,7 @@ export const Firebase = () = [
       };
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app)
+      const provider = new GoogleAuthProvider()
     //   const analytics = getAnalytics(app);
       const db = getFirestore(app);
       console.log(auth)
@@ -77,6 +81,24 @@ export const Firebase = () = [
             console.error(error.message)
         })
     }
+
+    function authSignInWithGoogle() {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log("Signed in with Google")
+            }).catch((error) => {
+                console.error(error.message)
+            })
+    }
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            showSignedInView()
+            showAvatar(avatar, user)
+        } else {
+            showSignedOutView() 
+        }
+    })
 
     function authSignOut() {
         signOut(auth)
