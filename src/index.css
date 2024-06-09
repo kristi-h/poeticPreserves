@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -112,13 +110,42 @@ code {
     monospace;
 }
 
-input[type='button'] {
+input[type='button'],
+input[type='submit'] {
   border: none;
   background: cornflowerblue;
   color: white;
-  padding: 12px 24px;
-  margin: 8px;
-  font-size: 24px;
-  border-radius: 8px;
+  padding: .75rem 1.5rem;
+  margin: .75rem 0;
+  font-size: 1rem;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-size: 1.2rem;
+}
+
+header {
+  background: rgba(0,0,0,0.2);
+  width: 100%;
+  padding: 1em;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+ul,
+nav,
+header {
+  display: flex;
+  gap: 1rem
 }
