@@ -29,7 +29,7 @@ const Login = () => {
     return (
       <div className={'outer-container'}>
         <div className={'title-container'}>
-          <div>Login</div>
+          <div className='login-title'>Login</div>
         </div>
         <br />
         <div className={'input-container'}>
