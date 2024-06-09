@@ -13,19 +13,14 @@ const Login = () => {
     } = useUserCreds()
     const navigate = useNavigate()
     
-    const onAcctLoginClick = () => {
-      setUser(prev => ({
-        ...prev,
-        email: emailInput,
-        password: passwordInput
-      }))
-      console.log({emailInput})
-      console.log({passwordInput})
-
-      if (emailInput === user.email && passwordInput === user.password){
-        loginClicked
-      } else {
-        "Login credentials could not be found. Please try again or create a new account."
+    const handleLogin = async () => {
+      const creds = { email, password }
+      try {
+        const user = await loginAccount(creds)
+        console.log('user login success', user)
+        navigate('create-poem', { replace: true })
+      } catch(e) {
+        console.log(e)
       }
     }
   
@@ -57,11 +52,13 @@ const Login = () => {
           {/* <label className="error-label">{passwordInputError}</label> */}
         </div>
         <br />
-        <div className={'input-container'}>
-          <input className={'input-button'} type="button" onClick={onAcctLoginClick} id="login-btn" value={'Log in'} />
-        </div>
-        <div className={'input-container'}>
-          <input className={'input-button'} type="button" onClick={onAcctCreateClick} id="create-btn" value={'Create account'} />
+        <div className="input-buttons">
+          <div className={'input-container'}>
+            <input className={'input-button'} type="button" onClick={handleLogin} id="login-btn" value={'Log in'} />
+          </div>
+          <Link to='register' >
+            Or Sign Up
+          </Link>
         </div>
       </div>
     )
