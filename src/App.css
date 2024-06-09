@@ -1,8 +1,6 @@
 #root {
-  max-width: 1280px;
+  max-width: 1480px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -34,7 +32,14 @@
 }
 
 .form-elements{
-  text-align: left; 
+  text-align: left;
+  margin: auto;
+}
+
+.entry-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
 }
 
 /*-----Login-------------------------------------*/
@@ -44,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .title-container {
@@ -55,6 +60,10 @@
   color: cornflowerblue;
   align-items: center;
   justify-content: center;
+}
+
+.login-title {
+  margin: 0;
 }
 
 .result-container,
@@ -80,14 +89,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 260px;
+  /* height: 260px; */
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
 }
 
 .input-container > .errorLabel {
@@ -96,10 +103,19 @@
 }
 
 .input-box {
-  height: 48px;
   width: 400px;
   font-size: large;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid grey;
-  padding-left: 8px;
+  padding: 1rem .5rem
 }
+
+.outer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: max-content;
+  min-height: 75vh;
+}
+
