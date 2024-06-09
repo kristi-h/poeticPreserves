@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import PrivateRoutes from './components/PrivateRoutes'
 import Register from './components/Register'
 import Header from './components/Header'
-import {  loginAccount, addPoem } from './lib/firebase'
 import AddEntry from './components/AddEntry'
 import { useUser } from './hooks/useUser'
 
@@ -19,7 +18,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<Home loginAcct={loginAccount} savePoem={addPoem}/>}/>
+        <Route path='/' element={<Home />}/>
         <Route path='/register' element={<Register />} />
         <Route element={<PrivateRoutes/>}>
           <Route path='/create-poem' element={<AddEntry />}/>
