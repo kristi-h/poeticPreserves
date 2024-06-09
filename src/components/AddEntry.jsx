@@ -32,9 +32,9 @@ export default function AddEntry(){
           }
       } 
     return(
-        <div>
-            <form className="form-elements" onSubmit={clickSubmit}>
-                <label>Title:
+        <div className='entry-container'>
+            <form className="form-elements" onSubmit={handleSubmit}>
+                <label>Title
                     <input 
                     type="text" 
                     name="title"
@@ -46,7 +46,7 @@ export default function AddEntry(){
                     />
                 </label>
                 <pre>
-                    <label>Author:
+                    <label>Author
                         <input 
                         type="text" 
                         placeholder='Maya Angelou'
@@ -59,7 +59,7 @@ export default function AddEntry(){
                     </label>
                 </pre>
                 <pre>
-                <label>Entry:
+                <label>Entry
                     <textarea
                     name="entry"
                     className='input-box'
@@ -72,7 +72,7 @@ export default function AddEntry(){
                 </label>
                 </pre>
                 <pre>
-                <label>Genre:
+                <label>Genre
                     <select name="genre" className='input-box' value={poem.genre} onChange={onChangeHandler} required>
                         <option value="pastoral">Pastoral</option>
                         <option value="satirical">Satirical</option>
@@ -83,7 +83,7 @@ export default function AddEntry(){
                 </label>
                 </pre>
                 <pre>
-                <label>Language:
+                <label>Language
                     <select name="language" className='input-box' value={poem.language} onChange={onChangeHandler} required>
                         <option value="english">English</option>
                         <option value="korean">Korean</option>
@@ -94,7 +94,7 @@ export default function AddEntry(){
                 </label>
                 </pre>
                 <pre>
-                <label>Keywords:
+                <label>Keywords
                     <select name="keyword" className='input-box' value={poem.keyword} onChange={onChangeHandler} required>
                         <option value="nature">Nature</option>
                         <option value="uplifting">Uplifting</option>
