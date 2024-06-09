@@ -1,23 +1,17 @@
-import React from 'react'
 
-const Login = ({user, createClicked, loginClicked}) => {
-    const [emailInput, setEmailInput] = React.useState('')
-    const [passwordInput, setPasswordInput] = React.useState('')
-    const [emailInputError, setEmailInputError] = React.useState('')
-    const [passwordInputError, setPasswordInputError] = React.useState('')
-  
-    const onAcctCreateClick = () => {
-      setUser(prev => ({
-        ...prev,
-        email: emailInput,
-        password: passwordInput
-      }))
-      console.log({emailInput})
-      console.log({passwordInput})
+import { Link } from 'react-router-dom'
+import { useUserCreds } from '../hooks/useUserCreds'
+import { loginAccount } from '../lib/firebase'
+import { useNavigate } from 'react-router-dom'
 
-      //firebse method to login
-      createClicked
-    }
+const Login = () => {
+    const {
+      password,
+      setPassword,
+      email,
+      setEmail
+    } = useUserCreds()
+    const navigate = useNavigate()
     
     const onAcctLoginClick = () => {
       setUser(prev => ({
