@@ -39,22 +39,22 @@ const Login = () => {
         <br />
         <div className={'input-container'}>
           <input
-            value={emailInput}
+            value={email}
             placeholder="Email"
-            onChange={(e) => setEmailInput(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             className={'input-box'}
           />
-          <label className="error-label">{emailInputError}</label>
+          {/* <label className="error-label">{emailInputError}</label> */}
         </div>
         <br />
         <div className={'input-container'}>
           <input
-            value={passwordInput}
+            value={password}
             placeholder="Password"
-            onChange={(e) => setPasswordInput(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className={'input-box'}
           />
-          <label className="error-label">{passwordInputError}</label>
+          {/* <label className="error-label">{passwordInputError}</label> */}
         </div>
         <br />
         <div className={'input-container'}>
