@@ -1,8 +1,36 @@
 import React from 'react'
 import '../App.css'
 import '../index.css'
+import { addPoem } from '../lib/firebase'
 
-export default function AddEntry({clickSubmit, onChangeHandler, poem }){
+export default function AddEntry(){
+    const [poem, setPoem] = React.useState({
+        title: "",
+        author: "",
+        date_added: Date.now(),
+        entry: "",
+        genre: "", 
+        language: ""
+    })
+
+    const onChangeHandler = (e) => {
+        setPoem({
+            ...poem,
+            [e.target.name]: e.target.value 
+        })
+        console.log('poem', poem)
+      }
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await addPoem(poem)
+            //clear the form
+            e.target.reset() 
+          } catch(e) {
+            console.log(e)
+          }
+      } 
     return(
         <div>
             <form className="form-elements" onSubmit={clickSubmit}>
