@@ -1,23 +1,32 @@
-import { FiLogOut } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { useUser } from "../hooks/useUser";
+import SignOut from "./SignOut";
 
-export function NavBar() {
 
-    function showProfile(imgElement, user) {
-        const photoURL = user.photoURL
-        
-        //give option to add an image
-        if (photoURL) {
-            imgElement.src = photoURL
-        } else {
-          <Avatar {...stringAvatar({user.name})} />
-        }
-    } 
-
-    return(
-        <div className={'container nav-menu'}>
-            <div>showProfile()</div>
-            <button className={'signout-btn'} type="button" onClick={signout}><FiLogOut /></button>
-        </div>
+export default function NavBar() {
+    const { user } = useUser()
+    return (
+        <header>
+            <nav>
+                <ul>
+                    {
+                        !user &&
+                        <>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='register'>Register</Link></li>
+                        </>
+                    }
+                    {
+                        user && <SignOut />
+                    }
+                </ul>
+            </nav>
+        </header>
     )
 }
+
+
+
+
+
 

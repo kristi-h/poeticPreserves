@@ -1,43 +1,32 @@
 import React from 'react'
 import './App.css'
 import Home from './pages/Home'
-import Firebase from '../Firebase'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import PrivateRoutes from './components/PrivateRoutes'
+import Register from './components/Register'
+import Header from './components/Header'
+import {  loginAccount, addPoem } from './lib/firebase'
+import AddEntry from './components/AddEntry'
+import { useUser } from './hooks/useUser'
 
 function App() {
   
-
-  const [user, setUser] = React.useState({
-    id: 0,
-    name: "",
-    email: "",
-    password: "",
-    isLoggedIn: false,
-    poems: []
-  })
-
-  const [poem, setPoem] = React.useState({
-      id: 0,
-      title: "",
-      author: "",
-      date_added: Date.now(),
-      entry: "",
-      genre: "", 
-      language: ""
-  })
-
-  const [allPoems, setAllPoems] = React.useState({
-
-  })
+  const { user } = useUser()
+  const navigate = useNavigate()
+  if(user) {
+    navigate('create-poem', { replace: true })
+  }
 
   return (
     <>
-     <Home 
-     poem={poem}
-     user={user}
-     createAcct={createAccount}
-     loginAcct={loginAccount}
-     savePoem={addPoemToDB}
-     />
+     <Header />
+      <Routes>
+        <Route path='/' element={<Home loginAcct={loginAccount} savePoem={addPoem}/>}/>
+        <Route path='/register' element={<Register />} />
+        <Route element={<PrivateRoutes/>}>
+          <Route path='/create-poem' element={<AddEntry />}/>
+        </Route>
+      </Routes>
     </>
   )
 }

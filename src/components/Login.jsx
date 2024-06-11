@@ -1,41 +1,26 @@
-import React from 'react'
-import { NavBar } from './NavBar'
+import { Link } from 'react-router-dom'
+import { useUserCreds } from '../hooks/useUserCreds'
+import { loginAccount } from '../lib/firebase'
+import { useNavigate } from 'react-router-dom'
 
-const Login = ({user, createClicked, loginClicked}) => {
-    const [emailInput, setEmailInput] = React.useState('')
-    const [passwordInput, setPasswordInput] = React.useState('')
-    const [emailInputError, setEmailInputError] = React.useState('')
-    const [passwordInputError, setPasswordInputError] = React.useState('')
-  
-    const onAcctCreateClick = () => {
-      setUser(prev => ({
-        ...prev,
-        email: emailInput,
-        password: passwordInput
-      }))
-      console.log({emailInput})
-      console.log({passwordInput})
+const Login = () => {
+  const {
+    password,
+    setPassword,
+    email,
+    setEmail
+  } = useUserCreds()
+  const navigate = useNavigate()
 
-      //firebse method to login
-      createClicked
-      //reset inputs
-    }
-    
-    const onAcctLoginClick = () => {
-      setUser(prev => ({
-        ...prev,
-        email: emailInput,
-        password: passwordInput
-      }))
-      console.log({emailInput})
-      console.log({passwordInput})
-
-      if (emailInput === user.email && passwordInput === user.password){
-        loginClicked
-      } else {
-        "Login credentials could not be found. Please try again or create a new account."
+  const handleLogin = async () => {
+    const creds = { email, password }
+    try {
+      const user = await loginAccount(creds)
+      console.log('user login success', user)
+      navigate('create-poem', { replace: true })
+    } catch(e) {
+      console.log(e)
       }
-     //reset inputs
     }
     
     return (
@@ -43,34 +28,36 @@ const Login = ({user, createClicked, loginClicked}) => {
       <section id="signedout-view">
           <div className={'outer-container'}>
           <div className={'title-container'}>
-            <div>Login</div>
+            <div className='login-title'>Login</div>
           </div>
           <br />
           <div className={'input-container'}>
             <input
-              value={emailInput}
+              value={email}
               placeholder="Email"
-              onChange={(e) => setEmailInput(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className={'input-box'}
             />
-            <label className="error-label">{emailInputError}</label>
+            {/* <label className="error-label">{emailInputError}</label> */}
           </div>
           <br />
           <div className={'input-container'}>
             <input
-              value={passwordInput}
+              value={password}
               placeholder="Password"
-              onChange={(e) => setPasswordInput(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className={'input-box'}
             />
-            <label className="error-label">{passwordInputError}</label>
+            {/* <label className="error-label">{passwordInputError}</label> */}
           </div>
           <br />
+          <div className="input-buttons">
           <div className={'input-container'}>
-            <input className={'input-button'} type="button" onClick={onAcctLoginClick} id="login-btn" value={'Log in'} />
+            <input className={'input-button'} type="button" onClick={handleLogin} id="login-btn" value={'Log in'} />
           </div>
-          <div className={'input-container'}>
-            <input className={'input-button'} type="button" onClick={onAcctCreateClick} id="create-btn" value={'Create account'} />
+          <Link to='register' >
+            Or Sign Up
+          </Link>
           </div>
         </div>
       </section>
