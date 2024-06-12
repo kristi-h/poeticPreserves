@@ -4,8 +4,8 @@ import Home from './pages/Home'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import PrivateRoutes from './components/PrivateRoutes'
 import Register from './components/Register'
-import Header from './components/Header'
-import {  loginAccount, addPoem } from './lib/firebase'
+import NavBar from './components/NavBar'
+import {  loginAccount, addPoem } from './library/firebase'
 import AddEntry from './components/AddEntry'
 import { useUser } from './hooks/useUser'
 
@@ -13,13 +13,15 @@ function App() {
   
   const { user } = useUser()
   const navigate = useNavigate()
-  if(user) {
-    navigate('create-poem', { replace: true })
-  }
+  React.useEffect(() => {
+    if(user) {
+      navigate('create-poem', { replace: true })
+    }
+  },[])
 
   return (
     <>
-     <Header />
+     <NavBar />
       <Routes>
         <Route path='/' element={<Home loginAcct={loginAccount} savePoem={addPoem}/>}/>
         <Route path='/register' element={<Register />} />

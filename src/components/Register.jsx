@@ -1,5 +1,5 @@
 import { useUserCreds } from "../hooks/useUserCreds"
-import { createAccount } from "../lib/firebase"
+import { createAccount } from "../library/firebase"
 import { useNavigate } from "react-router-dom"
 
 const Register = () => {

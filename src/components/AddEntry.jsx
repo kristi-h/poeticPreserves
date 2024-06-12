@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import '../index.css'
-import { addPoem } from '../lib/firebase'
+import { addPoem } from '../library/firebase'
 
 export default function AddEntry(){
     const [poem, setPoem] = React.useState({

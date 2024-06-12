@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useUserCreds } from '../hooks/useUserCreds'
-import { loginAccount } from '../lib/firebase'
+import { loginAccount } from '../library/firebase'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -28,7 +28,10 @@ const Login = () => {
       <section id="signedout-view">
           <div className={'outer-container'}>
           <div className={'title-container'}>
-            <div className='login-title'>Login</div>
+            <div className='login-title'>
+              poetry 
+              <br></br>
+             preserves</div>
           </div>
           <br />
           <div className={'input-container'}>
@@ -62,7 +65,7 @@ const Login = () => {
         </div>
       </section>
       <section id="signedin-view">
-        <h3>You can now add new entries to your account</h3>
+        {/* <h3>You can now add new entries to your account</h3> */}
       </section>
     </>
     )
