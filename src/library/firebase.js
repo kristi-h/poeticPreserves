@@ -1,10 +1,12 @@
 import { 
     createUserWithEmailAndPassword,  
-    signInWithEmailAndPassword 
+    signInWithEmailAndPassword,
+    signInWithPopup  
 } from "firebase/auth"
 import {
     addDoc,
-    collection
+    collection,
+    getDocs 
 } from 'firebase/firestore'
 import { auth, db } from '../firebase.config'
 
@@ -39,32 +41,14 @@ export function loginAccount(user) {
     })
 }
 
-// export function authSignInWithGoogle() {
-//     signInWithPopup(auth, provider)
-//         .then((result) => {
-//             console.log("Signed in with Google")
-//         }).catch((error) => {
-//             console.error(error.message)
-//         })
-// }
-
-// onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//         showSignedInView()
-//         showAvatar(avatar, user)
-//     } else {
-//         showSignedOutView() 
-//     }
-// })
-
-// export function authSignOut() {
-//     signOut(auth)
-//         .then(() => {
-//             signout()
-//         }).catch((error) => {
-//             console.error(error.message)
-//         })
-// }
+export function authSignInWithGoogle() {
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log("Signed in with Google")
+        }).catch((error) => {
+            console.error(error.message)
+        })
+}
 
 export async function addPoem(poem) {
     try {
@@ -77,4 +61,12 @@ export async function addPoem(poem) {
       } catch (error) {
         console.error(error.message);
       }
+}
+
+export async function fetchPoems() {
+  const allPoems = await getDocs(collection(db, 'poems'))
+
+  allPoems.forEach((doc) => {
+    console.log(doc.id, doc.data())
+  })
 }

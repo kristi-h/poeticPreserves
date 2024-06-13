@@ -1,6 +1,7 @@
 import { useUserCreds } from "../hooks/useUserCreds"
 import { createAccount } from "../library/firebase"
 import { useNavigate } from "react-router-dom"
+import AddEntry from "./AddEntry"
 
 const Register = () => {
     const {
@@ -18,7 +19,8 @@ const Register = () => {
       try {
         await createAccount(creds)
         console.log('success')
-        navigate('create-poem', { replace: true })
+        // navigate('create-poem', { replace: true })
+        navigate('create-poem', {replace: true})
       } catch(e) {
         console.log(e)
       }

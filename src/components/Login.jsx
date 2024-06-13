@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { useUserCreds } from '../hooks/useUserCreds'
 import { loginAccount } from '../library/firebase'
 import { useNavigate } from 'react-router-dom'
+import { GoogleBtn } from './GoogleBtn'
+
 
 const Login = () => {
   const {
@@ -17,6 +19,7 @@ const Login = () => {
     try {
       const user = await loginAccount(creds)
       console.log('user login success', user)
+      // navigate('create-poem', { replace: true })
       navigate('create-poem', { replace: true })
     } catch(e) {
       console.log(e)
@@ -25,6 +28,8 @@ const Login = () => {
     
     return (
       <>
+      <GoogleBtn />
+                
       <section id="signedout-view">
           <div className={'outer-container'}>
           <div className={'title-container'}>
