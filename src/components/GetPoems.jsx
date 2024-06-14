@@ -1,6 +1,20 @@
-import { fetchPoems } from "../library/firebase"
+// import { fetchPoems } from "../library/firebase"
+import {
+    collection,
+    getDocs 
+} from 'firebase/firestore'
+import { db } from '../firebase.config'
 
 export default function GetPoems({poem}){
+
+    async function fetchPoems() {
+        const allPoems = await getDocs(collection(db, 'poems'))
+      
+        allPoems.forEach((doc) => {
+          console.log(doc.id, doc.data())
+        })
+      }
+
     function displayDate(savedDate) {
         const date = savedDate.toDate()
         
@@ -21,19 +35,20 @@ export default function GetPoems({poem}){
     return (
         <>
             <div>
-                <button id="fetch-poems" onClick={fetchPoems}>See my poems</button>
+                {fetchPoems()}
+                {/* <button id="fetch-poems" onClick={fetchPoems}>See my poems</button> */}
             </div>
 
             <div id="poems" className="poems-section">
                 <div className="poem">
                     <div className="poem-header">
-                        <h3 className="poem-title">{poem.title}</h3>
-                        <h3 className="poem-author">{poem.author}</h3>
+                        <h3 className="poem-title">{poem}</h3>
+                        <h3 className="poem-author">{poem}</h3>
                     </div>
                     <p className="poem.entry">
                         {poem.entry}
                     </p>
-                    <h5>{displayDate(poem.date_added)}</h5>
+                    <h5>{displayDate(this.poem.date_added)}</h5>
                 </div>
             </div>
         </>

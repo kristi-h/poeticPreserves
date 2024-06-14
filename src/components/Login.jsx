@@ -28,7 +28,7 @@ const Login = () => {
     
     return (
       <>
-      <GoogleBtn />
+      {/* <GoogleBtn /> */}
                 
       <section id="signedout-view">
           <div className={'outer-container'}>

@@ -63,10 +63,10 @@ export async function addPoem(poem) {
       }
 }
 
-export async function fetchPoems() {
-  const allPoems = await getDocs(collection(db, 'poems'))
+// export async function fetchPoems() {
+//   const allPoems = await getDocs(collection(db, 'poems'))
 
-  allPoems.forEach((doc) => {
-    console.log(doc.id, doc.data())
-  })
-}
+//   allPoems.forEach((doc) => {
+//     console.log(doc.id, doc.data())
+//   })
+// }
