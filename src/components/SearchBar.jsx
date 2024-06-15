@@ -10,6 +10,12 @@ export default function SearchBar() {
         //convert input text to lower case
         var lowerCase = e.target.value.toLowerCase();
         setsearch(lowerCase);
+
+    function searchBy() {
+        if (search === poem.author || poem.title) {
+            setPoem(poem)
+        }
+    }
     
     return (
         <div className="search-bar">
