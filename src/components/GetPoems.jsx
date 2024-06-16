@@ -22,7 +22,7 @@ export default function GetPoems({poem, setPoem, user}){
               })
             })
           }
-    }, [user])
+    }, [poem, setPoem, user])
 
     function displayDate(savedDate) {
         const date = savedDate.toDate()
@@ -46,19 +46,21 @@ export default function GetPoems({poem, setPoem, user}){
             <div>
                 {/* <button id="fetch-poems" onClick={fetchPoems}>See my poems</button> */}
             </div>
-
-            <div id="poems" className="poems-section">
-                <div className="poem">
-                    <div className="poem-header">
-                        <h3 className="poem-title">{poem.title}</h3>
-                        <h3 className="poem-author">{poem.author}</h3>
+            {poem? (
+                <div id="poems" className="poems-section">
+                    <div className="poem">
+                        <div className="poem-header">
+                            <h3 className="poem-title">{poem.title}</h3>
+                            <h3 className="poem-author">{poem.author}</h3>
+                        </div>
+                        <p className="poem.entry">
+                            {poem.entry}
+                        </p>
+                        <h5>{displayDate(this.poem.date_added)}</h5>
                     </div>
-                    <p className="poem.entry">
-                        {poem.entry}
-                    </p>
-                    <h5>{displayDate(this.poem.date_added)}</h5>
                 </div>
-            </div>
+            ): <h2>Loading...</h2>}
+            
         </>
     )
 }
