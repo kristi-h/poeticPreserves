@@ -1,19 +1,28 @@
 // import { fetchPoems } from "../library/firebase"
+import React from 'react'
 import {
     collection,
     getDocs 
 } from 'firebase/firestore'
 import { db } from '../firebase.config'
 
-export default function GetPoems({poem}){
+export default function GetPoems({poem, setPoem, user}){
 
-    async function fetchPoems() {
-        const allPoems = await getDocs(collection(db, 'poems'))
-      
-        allPoems.forEach((doc) => {
-          console.log(doc.id, doc.data())
-        })
-      }
+    React.useEffect(()=> {
+        async function fetchPoems() {
+            const allPoems = await getDocs(collection(db, 'poems'))
+          
+            allPoems.forEach((p) => {
+              setPoem({
+                ...poem,
+                title: p.title,
+                author: p.author,
+                date_added: p.date_added,
+                entry: p.entry
+              })
+            })
+          }
+    }, [user])
 
     function displayDate(savedDate) {
         const date = savedDate.toDate()
@@ -35,15 +44,14 @@ export default function GetPoems({poem}){
     return (
         <>
             <div>
-                {fetchPoems()}
                 {/* <button id="fetch-poems" onClick={fetchPoems}>See my poems</button> */}
             </div>
 
             <div id="poems" className="poems-section">
                 <div className="poem">
                     <div className="poem-header">
-                        <h3 className="poem-title">{poem}</h3>
-                        <h3 className="poem-author">{poem}</h3>
+                        <h3 className="poem-title">{poem.title}</h3>
+                        <h3 className="poem-author">{poem.author}</h3>
                     </div>
                     <p className="poem.entry">
                         {poem.entry}

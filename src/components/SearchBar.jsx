@@ -13,7 +13,7 @@ export default function SearchBar() {
 
     function searchBy() {
         if (search === poem.author || poem.title) {
-            setPoem(poem)
+            setPoem(poem[search] = True)
         }
     }
     
