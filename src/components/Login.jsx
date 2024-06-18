@@ -19,7 +19,6 @@ const Login = () => {
     try {
       const user = await loginAccount(creds)
       console.log('user login success', user)
-      // navigate('create-poem', { replace: true })
       navigate('create-poem', { replace: true })
     } catch(e) {
       console.log(e)

@@ -4,11 +4,12 @@ import Home from './pages/Home'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import PrivateRoutes from './components/PrivateRoutes'
 import Register from './components/Register'
-import NavBar from './components/NavBar'
+import Header from './components/Header'
 import {  loginAccount, addPoem } from './library/firebase'
-import AddEntry from './components/AddEntry'
+import NewPoem from './pages/NewPoem'
 import { useUser } from './hooks/useUser'
-import GetPoems from './components/GetPoems'
+import Poems from './pages/Poems'
+
 
 function App() {
   
@@ -31,13 +32,13 @@ function App() {
 
   return (
     <>
-     <NavBar />
+     <Header />
       <Routes>
         <Route path='/' element={<Home loginAcct={loginAccount} savePoem={addPoem}/>}/>
         <Route path='/register' element={<Register />} />
         <Route element={<PrivateRoutes/>}>
-          <Route path='/create-poem' element={<AddEntry poem={poem} setPoem={setPoem} />}/>
-          <Route path='/get-poem' element={<GetPoems poem={poem} />}/>
+          <Route path='/create-poem' element={<NewPoem poem={poem} setPoem={setPoem} />}/>
+          <Route path='/get-poems' element={<Poems poem={poem} />}/>
         </Route>
       </Routes>
     </>

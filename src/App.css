@@ -44,6 +44,12 @@
   padding-top: 3rem;
 }
 
+/*-----NavBar-------------------------------------*/
+
+.nav-item {
+  margin-left: 2rem;
+}
+
 /*-----Google btn-------------------------------------*/
 
 .gsi-material-button {

@@ -3,6 +3,7 @@ import '../App.css'
 import '../index.css'
 import { addPoem } from '../library/firebase'
 
+
 export default function AddEntry({poem, setPoem}){
 
     const onChangeHandler = (e) => {

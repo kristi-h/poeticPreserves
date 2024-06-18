@@ -11,8 +11,16 @@ export default function GetPoems({poem, setPoem, user}){
     React.useEffect(()=> {
         async function fetchPoems() {
             const allPoems = await getDocs(collection(db, 'poems'))
-          
-            allPoems.forEach((p) => {
+            
+            const timeElapsed = allPoems.map(p=> {
+                (Date.now() - p.date_added)
+            })
+            const sorted = timeElapsed.sort(function(a,b){
+                return a-b
+            })
+            const mostRecent = sorted.substring(0, 4)
+            
+            mostRecent.forEach((p) => {
               setPoem({
                 ...poem,
                 title: p.title,
@@ -22,6 +30,7 @@ export default function GetPoems({poem, setPoem, user}){
               })
             })
           }
+        fetchPoems()
     }, [poem, setPoem, user])
 
     function displayDate(savedDate) {
