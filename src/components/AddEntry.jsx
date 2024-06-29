@@ -4,7 +4,7 @@ import '../index.css'
 import { addPoem } from '../library/firebase'
 
 
-export default function AddEntry({poem, setPoem}){
+export default function AddEntry(){
 
     const onChangeHandler = (e) => {
         setPoem({

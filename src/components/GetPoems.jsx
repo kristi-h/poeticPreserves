@@ -1,4 +1,3 @@
-// import { fetchPoems } from "../library/firebase"
 import React from 'react'
 import {
     collection,
@@ -6,7 +5,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase.config'
 
-export default function GetPoems({poem, setPoem, user}){
+export default function GetPoems(){
 
     React.useEffect(()=> {
         async function fetchPoems() {
@@ -30,8 +29,10 @@ export default function GetPoems({poem, setPoem, user}){
               })
             })
           }
+
         fetchPoems()
-    }, [poem, setPoem, user])
+        
+    }, [user])
 
     function displayDate(savedDate) {
         const date = savedDate.toDate()

@@ -1,8 +1,24 @@
-# React + Vite
+# Poetic Preserves: A personal library of your favorite poems
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Overview
 
-Currently, two official plugins are available:
+This app lets you catalogue your favorite poems by author, title, genre, language, keywords. You can also save your own custom poems by saving it under your name. It gives you quick, easy personal access to your important pieces of literature without the hassle of having to comb through bookmarks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# Features
+
+
+
+# Running the Project
+
+1. Clone this project locally
+2. Run `npm install` in your command line
+3. Run `npm run dev` in your command line
+4. Create an account and sign in to get started!
+
+# Dependencies
+
+- React
+- React-DOM
+- ESLint
+
