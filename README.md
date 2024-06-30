@@ -7,6 +7,9 @@ This app lets you catalogue your favorite poems by author, title, genre, languag
 
 # Features
 
+**Create**: Save new poems into your catalogue.
+**Search**: Search for your poems by choice of author, title, genre, keyword
+**Share**: Share your favorites with your friends
 
 
 # Running the Project
